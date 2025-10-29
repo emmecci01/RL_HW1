@@ -40,6 +40,10 @@ ros2 launch armando_description armando_display.launch.py
 ```
 
 ### Simulation and Control in Gazebo
+At first:
+```bash
+cd ~/ros2_ws/src
+```
 
 #### Option 1: Position Controller
 
@@ -69,26 +73,21 @@ ros2 run armando_controller arm_controller_node --ros-args -p controller_type:=t
 
 To view the camera feed:
 ```bash
-ros2 run rqt_image_view rqt_image_view /videocamera
-```
-
-Or use:
-```bash
-ros2 run rqt_image_view rqt_image_view /armando/camera/image
+ros2 run rqt_image_view rqt_image_view /armando/camera
 ```
 
 ## 🎮 Manual Control
 
 ### Position Controller
 
-Publish position commands manually:
+Publish position commands manually, after launching position controller:
 ```bash
 ros2 topic pub /position_controller/commands std_msgs/msg/Float64MultiArray "{data: [0.0, 0.5, 0.5, 0.5]}"
 ```
 
 ### Trajectory Controller
 
-Publish trajectory commands manually:
+Publish trajectory commands manually, after launching trajectory controller:
 ```bash
 ros2 topic pub --once /joint_trajectory_controller/joint_trajectory trajectory_msgs/msg/JointTrajectory "{
   joint_names: ['j0', 'j1', 'j2', 'j3'],
