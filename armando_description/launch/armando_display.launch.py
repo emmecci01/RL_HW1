@@ -44,7 +44,8 @@ def generate_launch_description():
         executable='robot_state_publisher',
         name='robot_state_publisher',
         output='screen',
-        parameters=[robot_description, {"use_sim_time": True }]
+        parameters=[robot_description]
+        #parameters=[robot_description, {"use_sim_time": True }]
     )
 
     # Nodo joint_state_publisher_gui
@@ -52,9 +53,10 @@ def generate_launch_description():
         package='joint_state_publisher_gui',
         executable='joint_state_publisher_gui',
         name='joint_state_publisher_gui',
-        output='screen',
-        parameters=[robot_description, {"use_sim_time": True }]
+        output='screen'
+        #parameters=[robot_description, {"use_sim_time": True }] to control both in gazebo and rviz
     )
+
 
     # Nodo RViz2
     rviz_node = Node(
